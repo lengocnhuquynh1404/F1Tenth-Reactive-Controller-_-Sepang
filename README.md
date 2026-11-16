@@ -1,5 +1,22 @@
 # F1Tenth-Reactive-Controller-_-Sepang
 # F1TENTH Fast Follow-the-Gap Reactive Controller
+## Table of Contents
+
+1. [Project Overview](#1-project-overview)
+2. [ROS 2 System Architecture](#2-ros-2-system-architecture)
+3. [Mathematical Formulation and Algorithmic Approach](#3-mathematical-formulation-and-algorithmic-approach)
+4. [Code Structure](#4-code-structure)
+5. [Code Explanation](#5-code-explanation)
+6. [Installation and Configuration](#6-installation-and-configuration)
+7. [Controller Parameters](#7-controller-parameters)
+8. [Lap Tracking and Performance Logging](#8-lap-tracking-and-performance-logging)
+9. [Testing and Performance Evaluation](#9-testing-and-performance-evaluation)
+10. [Conclusion](#10-conclusion)
+
+**Course:** Vehicles Sensors 
+**Project:** Individual Reactive Controller  
+**Algorithm:** Fast Follow-the-Gap + Disparity Extender  
+**Platform:** F1TENTH Gym ROS 2
 
 ## 1. Project Overview
 
@@ -268,7 +285,43 @@ Responsible for ROS 2 communication and sensor callbacks.
 
 The `main()` function initializes ROS 2, creates the controller node, and starts the ROS 2 event loop using `rclpy.spin()`.
 
-## 5. Code Explanation
+## 5. Create the Controller Python File
+
+Create a Python file named fast_gap_controller.py to store the complete controller source code.
+
+Option 1: Create the file directly on GitHub
+
+Open the F1Tenth-Reactive-Controller repository.
+
+Click Add file → Create new file.
+
+Enter the filename:
+
+fast_gap_controller.py
+
+Paste the complete Python controller code into the editor.
+
+Click Commit changes to save the file.
+
+Option 2: Create the file locally on Ubuntu
+
+Open a terminal and run:
+
+mkdir -p ~/F1Tenth-Reactive-Controller
+cd ~/F1Tenth-Reactive-Controller
+nano fast_gap_controller.py
+
+Paste the complete Python source code, then save with Ctrl + O, press Enter, and exit with Ctrl + X.
+
+Expected Repository Structure
+
+F1Tenth-Reactive-Controller/
+├── README.md
+└── fast_gap_controller.py
+
+The fast_gap_controller.py file contains the complete implementation of the Follow-the-Gap controller, including the FastGapCore class, the FastGap ROS 2 node, and the main() function.
+
+### Code Explanation
 
 This section explains how the main functions work and how the controller processes sensor information.
 
@@ -740,8 +793,3 @@ By combining LiDAR preprocessing, Disparity Extender, gap detection, steering co
 The implementation is evaluated through collision-free lap completion and fastest lap time in the assigned competition environment.
 
 ---
-
-**Course:** Autonomous Vehicles  
-**Project:** Individual Reactive Controller  
-**Algorithm:** Fast Follow-the-Gap + Disparity Extender  
-**Platform:** F1TENTH Gym ROS 2
