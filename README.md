@@ -79,13 +79,13 @@ The controller processes each selected LiDAR scan through the following stages.
 
 The controller converts LiDAR measurements into a NumPy array.
 
-Invalid measurements are handled using `numpy.nan_to_num`, and the distance values are clipped to the configured maximum range.
+Invalid measurements are handled using `numpy.nan_to_num`, and distance values are clipped to the configured maximum range.
 
 The forward field of view is limited to:
 
-\[
+$$
 -FOV \leq \theta \leq FOV
-\]
+$$
 
 Default parameters:
 
@@ -100,10 +100,10 @@ If the difference exceeds the disparity threshold, the obstacle region is extend
 
 The extension angle is calculated as:
 
-\[
+$$
 \Delta\theta =
 \arctan\left(\frac{w}{d}\right)
-\]
+$$
 
 Where:
 
@@ -123,10 +123,10 @@ A moving-average filter is applied to the extended LiDAR measurements.
 
 The smoothing window is calculated using:
 
-\[
+$$
 W=\max\left(3,\operatorname{int}
 \left(\frac{0.022}{\Delta\theta_{\text{LiDAR}}}\right)\right)
-\]
+$$
 
 This reduces sudden variations in the processed scan.
 
@@ -136,15 +136,15 @@ The controller identifies free-space directions using the processed LiDAR measur
 
 A threshold is calculated from the maximum smoothed range:
 
-\[
+$$
 T=0.9\max(r_{\text{smooth}})
-\]
+$$
 
 Candidate directions are selected when:
 
-\[
+$$
 r_{\text{smooth}}[i]\geq T
-\]
+$$
 
 Among these candidates, the controller selects the direction closest to the vehicle's forward direction.
 
@@ -154,19 +154,19 @@ This approach favors open spaces while reducing unnecessary steering movements.
 
 The steering angle is calculated using proportional control:
 
-\[
+$$
 \delta_{\text{raw}}=K_p\theta_{\text{target}}
-\]
+$$
 
 The steering angle is limited to the maximum steering range.
 
 A smoothing filter is then applied:
 
-\[
+$$
 \delta_t =
 \alpha\delta_{\text{raw}}
 +(1-\alpha)\delta_{t-1}
-\]
+$$
 
 Where:
 
@@ -186,31 +186,30 @@ Vehicle speed is adjusted according to steering angle, front obstacle distance, 
 
 **1. Steering-based speed limitation**
 
-\[
+$$
 v_{\text{curve}} =
 v_{\text{lim}}-
 (v_{\text{lim}}-\min(v_{\min},v_{\text{lim}}))
 \min\left(1,\frac{|\delta|}{s_{\text{ref}}}\right)
-\]
+$$
 
 **2. Front-obstacle braking**
 
-\[
+$$
 v_{\text{brake}} =
 \sqrt{2a\max(d_{\text{front}}-d_{\text{margin}},0)}
-\]
+$$
 
 **3. Final speed selection**
 
-\[
+$$
 v=\max\left(
 \min(v_{\min},v_{\text{lim}}),
 \min(v_{\text{curve}},v_{\text{brake}},v_{\text{lim}})
 \right)
-\]
+$$
 
 This allows the vehicle to reduce speed when approaching obstacles or making sharp turns.
-
 ### Stage 7: Automatic Speed Tuning and Lap Tracking
 
 The controller monitors lap completion and evaluates the minimum measured side clearance.
@@ -657,8 +656,6 @@ python3 fast_gap_controller.py --ros-args \
 | `sref` | 0.35 | Reference steering angle for speed adjustment |
 
 **Note:** The actual vehicle speed is also constrained by obstacle distance, steering angle, and other controller limits. The `vmax` value is a configured upper limit, not a guarantee that the vehicle will reach that speed.
-```
-
 The controller starts with an initial maximum speed of 2.0 m/s.
 
 ## 7. Controller Parameters
@@ -709,22 +706,7 @@ The learned speed and local slow-zone information are stored in:
 
 `fast_gap_state.json`
 
-## 9. Race Execution Mode
-
-After completing the tuning phase, the controller can load its saved speed state and disable further automatic tuning.
-
-Example:
-
-```bash
-python3 fast_gap_controller.py --ros-args \
--p vmax:=2.0 \
--p load:=true \
--p freeze:=true
-```
-
-This mode is intended for competition testing with a fixed learned speed configuration.
-
-## 10. Testing and Performance Evaluation
+## 9. Testing and Performance Evaluation
 
 The controller is evaluated according to the official course competition requirements.
 
@@ -736,7 +718,7 @@ The objective is to complete ten consecutive laps without colliding with the tra
 
 The objective is to achieve the fastest valid lap time among the ten completed laps.
 
-### Performance Evidence
+### Performance Evidence Video 
 
 The following evidence should be included:
 
@@ -745,8 +727,10 @@ The following evidence should be included:
 - Ten-lap completion results.
 - Fastest lap time.
 - CSV performance records.
+### Video Evidence
+https://youtu.be/_DQZCvx-bso?si=EEl13y7ScpEpLpWi
 
-## 11. Conclusion
+## 10. Conclusion
 
 This project implements an enhanced Follow-the-Gap reactive controller for autonomous navigation in the F1TENTH simulation environment.
 
