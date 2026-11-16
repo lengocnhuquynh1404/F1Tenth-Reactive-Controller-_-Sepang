@@ -37,7 +37,7 @@ It processes LiDAR measurements to identify free driving space, avoid obstacles,
 - Programming Language: Python 3
 - Navigation Algorithm: Follow-the-Gap
 - Controller Version: v3
-- Reference Track: Zandvoort
+- Reference Track: Sepang_map
 
 ## 2. ROS 2 System Architecture
 
@@ -713,6 +713,14 @@ python3 fast_gap_controllen.py --ros-args \
 
 **Note:** The actual vehicle speed is also constrained by obstacle distance, steering angle, and other controller limits. The `vmax` value is a configured upper limit, not a guarantee that the vehicle will reach that speed.
 The controller starts with an initial maximum speed of 2.0 m/s.
+**CLEAN / DIRTY Lap Classification**
+The controller classifies each lap based on the minimum measured side clearance (`min_clear`) compared with the clearance threshold (`clear_thr`).
+
+- **CLEAN:** `min_clear >= clear_thr`
+- **DIRTY:** `min_clear < clear_thr`
+
+The default clearance threshold is `0.17 m`.
+This classification is based on LiDAR side-clearance measurements and does not represent direct collision detection.
 
 ## 7. Controller Parameters
 
