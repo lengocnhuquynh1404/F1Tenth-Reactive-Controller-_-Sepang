@@ -124,8 +124,8 @@ $$
 
 Where:
 
-- \(w\): Vehicle half-width.
-- \(d\): Distance to the closer obstacle.
+- w: Vehicle half-width.
+- d: Distance to the closer obstacle.
 
 Default parameters:
 
@@ -188,14 +188,14 @@ $$
 
 Where:
 
-- \(K_p\): Proportional gain.
-- \(\alpha\): Steering smoothing factor.
-- \(\delta_t\): Current steering angle.
+-Kp: Proportional gain.
+-α: Steering smoothing factor.
+-δt: Current steering angle.
 
 Default parameters:
 
-- \(K_p=1.0\)
-- \(\alpha=0.8\)
+- Kp=1.0
+- α=0.8
 - Maximum Steering Angle: 0.4189 rad
 
 ### Stage 6: Adaptive Speed Control
@@ -297,7 +297,7 @@ Click Add file → Create new file.
 
 Enter the filename:
 
-fast_gap_controllen.py
+```fast_gap_controllen.py```
 
 Paste the complete Python controller code into the editor.
 
@@ -306,10 +306,10 @@ Click Commit changes to save the file.
 Option 2: Create the file locally on Ubuntu
 
 Open a terminal and run:
-
+```
 cd ~/Downloads
 nano fast_gap_controllen.py
-
+```
 Paste the complete Python source code, then save with Ctrl + O, press Enter, and exit with Ctrl + X.
 
 Expected Repository Structure
