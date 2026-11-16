@@ -557,27 +557,45 @@ Follow the official installation tutorial:
 
 https://github.com/widegonz/F1Tenth-Repository
 
-### Step 2: Configure the Zandvoort Map
+### Map Configuration
 
-Copy the map files into the simulator's maps directory.
+The F1TENTH Gym ROS simulator uses a map file to define the racing environment. By default, the configuration may use the `levine` map:
 
-Example:
-
-```bash
-cp maps/Zandvoort_map.png \
-~/ros2_ws/src/f1tenth_gym_ros/maps/
+```yaml
+map_path: '/home/F1Tenth-Repository/src/f1tenth_gym_ros/maps/levine'
 ```
 
-Update the simulator configuration:
+In this configuration, the simulator loads the `levine.png` map.
 
-```bash
-nano ~/ros2_ws/src/f1tenth_gym_ros/config/sim.yaml
-```
+To use a different map, follow these steps:
+
+1. Place your map image (`.png`) in the `maps` directory:
+
+   ```text
+   F1Tenth-Repository/
+   └── src/
+       └── f1tenth_gym_ros/
+           └── maps/
+               ├── levine.png
+               └── your_map.png
+   ```
+
+2. Open the simulator configuration file, usually `sim.yaml`.
+
+3. Locate the `map_path` parameter and replace `levine` with the name of your map (without the `.png` extension):
+
+   ```yaml
+   map_path: '/home/F1Tenth-Repository/src/f1tenth_gym_ros/maps/Sepang_map'
+   ```
+
+4. Save the configuration file and restart the simulator.
+
+**Note:** Make sure the map image is placed in the correct directory and that the `map_path` matches the map filename. The corresponding map configuration files, such as the YAML map metadata, may also be required depending on the simulator setup.
 
 Example configuration based on the reference setup:
 
 ```yaml
-map_path: '/absolute/path/to/Zandvoort_map'
+map_path: '/absolute/path/to/Sepang_map'
 map_img_ext: '.png'
 num_agent: 1
 sx: 0.0
@@ -601,16 +619,44 @@ Open the first terminal:
 
 ```bash
 source ~/ros2_ws/install/setup.bash
-
+cd ~/F1Tenth-Repository
+source install/setup.bash
 ros2 launch f1tenth_gym_ros gym_bridge_launch.py
 ```
 
 ### Step 5: Run the Controller
 
 Open another terminal:
-
+### Controller Execution
+Run the controller using the following command:
 ```bash
-python3 fast_gap_controller.py --ros-args -p vmax:=2.0
+cd ~/Downloads
+source install/setup.bash
+python3 fast_gap_controller.py --ros-args \
+-p vmax:=60.0 \
+-p max_range:=60.0 \
+-p decel:=7.0 \
+-p autotune:=false \
+-p kp:=0.7 \
+-p alpha:=0.5 \
+-p skip:=2 \
+-p sref:=0.35
+```
+
+**Parameter Configuration**
+
+| Parameter | Value | Description |
+|---|---:|---|
+| `vmax` | 60.0 | Maximum speed limit |
+| `max_range` | 60.0 | Maximum LiDAR range used for preprocessing |
+| `decel` | 7.0 | Deceleration parameter used in braking calculations |
+| `autotune` | false | Disables automatic speed tuning |
+| `kp` | 0.7 | Proportional steering gain |
+| `alpha` | 0.5 | Steering smoothing factor |
+| `skip` | 2 | Processes every second LiDAR callback |
+| `sref` | 0.35 | Reference steering angle for speed adjustment |
+
+**Note:** The actual vehicle speed is also constrained by obstacle distance, steering angle, and other controller limits. The `vmax` value is a configured upper limit, not a guarantee that the vehicle will reach that speed.
 ```
 
 The controller starts with an initial maximum speed of 2.0 m/s.
