@@ -320,7 +320,9 @@ F1Tenth-Reactive-Controller/
 └── fast_gap_controller.py
 
 The fast_gap_controller.py file contains the complete implementation of the Follow-the-Gap controller, including the FastGapCore class, the FastGap ROS 2 node, and the main() function.
+The complete controller implementation is available in:
 
+fast_gap_controller.py
 ### Code Explanation
 
 This section explains how the main functions work and how the controller processes sensor information.
