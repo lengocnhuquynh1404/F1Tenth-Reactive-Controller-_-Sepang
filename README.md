@@ -124,8 +124,9 @@ A moving-average filter is applied to the extended LiDAR measurements.
 The smoothing window is calculated using:
 
 $$
-W=\max\left(3,\operatorname{int}
-\left(\frac{0.022}{\Delta\theta_{\text{LiDAR}}}\right)\right)
+W=\max\left(3,\mathrm{int}\left(
+\frac{0.022}{\Delta\theta_{\text{LiDAR}}}
+\right)\right)
 $$
 
 This reduces sudden variations in the processed scan.
