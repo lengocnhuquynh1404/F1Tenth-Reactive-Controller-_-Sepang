@@ -287,17 +287,17 @@ The `main()` function initializes ROS 2, creates the controller node, and starts
 
 ## 5. Create the Controller Python File
 
-Create a Python file named fast_gap_controller.py to store the complete controller source code.
+Create a Python file named fast_gap_controllen.py to store the complete controller source code.
 
 Option 1: Create the file directly on GitHub
 
-Open the F1Tenth-Reactive-Controller repository.
+Open the Downloads repository.
 
 Click Add file → Create new file.
 
 Enter the filename:
 
-fast_gap_controller.py
+fast_gap_controllen.py
 
 Paste the complete Python controller code into the editor.
 
@@ -307,22 +307,22 @@ Option 2: Create the file locally on Ubuntu
 
 Open a terminal and run:
 
-mkdir -p ~/F1Tenth-Reactive-Controller
-cd ~/F1Tenth-Reactive-Controller
-nano fast_gap_controller.py
+cd ~/Downloads
+nano fast_gap_controllen.py
 
 Paste the complete Python source code, then save with Ctrl + O, press Enter, and exit with Ctrl + X.
 
 Expected Repository Structure
 
-F1Tenth-Reactive-Controller/
+Downloads/
 ├── README.md
 └── fast_gap_controller.py
 
 The fast_gap_controller.py file contains the complete implementation of the Follow-the-Gap controller, including the FastGapCore class, the FastGap ROS 2 node, and the main() function.
 The complete controller implementation is available in:
 
-fast_gap_controller.py
+fast_gap_controllen.py
+
 ### Code Explanation
 
 This section explains how the main functions work and how the controller processes sensor information.
@@ -687,7 +687,7 @@ Run the controller using the following command:
 ```bash
 cd ~/Downloads
 source install/setup.bash
-python3 fast_gap_controller.py --ros-args \
+python3 fast_gap_controllen.py --ros-args \
 -p vmax:=60.0 \
 -p max_range:=60.0 \
 -p decel:=7.0 \
