@@ -773,14 +773,12 @@ The learned speed and local slow-zone information are stored in:
 ## 9. Testing and Performance Evaluation
 
 The controller is evaluated according to the official course competition requirements.
-
-### Challenge 1: 10 Consecutive Laps Without Collisions
-
-The objective is to complete ten consecutive laps without colliding with the track walls.
-
-### Challenge 2: Fastest Lap Time
-
-The objective is to achieve the fastest valid lap time among the ten completed laps.
+| Evaluation Summary | Result |
+|Test 1: 10 Consecutive Laps Without Collisions | 10/10 | 
+|Test 2:Fastest Lap Time |— s |
+|Average Lap Time |— s|
+|Average Speed |— m/s|
+|Average Distance per Lap |— m|
 
 ### Performance Evidence Video 
 
