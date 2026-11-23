@@ -793,8 +793,7 @@ The following evidence should be included:
 - Fastest lap time.
 - CSV performance records.
 ### Video Evidence
-https://youtu.be/_DQZCvx-bso?si=EEl13y7ScpEpLpWi
-
+(https://www.youtube.com/watch?v=vlf3WmrxJrc)
 ## 10. Conclusion
 
 This project implements an enhanced Follow-the-Gap reactive controller for autonomous navigation in the F1TENTH simulation environment.
