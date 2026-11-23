@@ -780,8 +780,8 @@ The controller is evaluated according to the official course competition require
 | **Test 1: 10 Consecutive Laps Without Collisions** | **10/10** | ✅ Completed & Verified |
 | **Test 2: Fastest Lap Time** | 54.12s | ✅ Completed |
 | **Average Lap Time** | 56.07s | ✅Verified |
-| **Average Speed** | — m/s | ⏳ Pending |
-| **Average Distance per Lap** | — m | ⏳ Pending |
+| **Average Speed** | 8.44 m/s | ✅Verified |
+| **Average Distance per Lap** | 471.52 m | ✅Verified |
 | **Overall Status** | — | ✅ Completed |
 ### Performance Evidence Video 
 
