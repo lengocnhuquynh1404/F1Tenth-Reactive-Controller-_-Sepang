@@ -773,13 +773,16 @@ The learned speed and local slow-zone information are stored in:
 ## 9. Testing and Performance Evaluation
 
 The controller is evaluated according to the official course competition requirements.
-| Evaluation Summary | Result |
-|Test 1: 10 Consecutive Laps Without Collisions | 10/10 | 
-|Test 2:Fastest Lap Time |— s |
-|Average Lap Time |— s|
-|Average Speed |— m/s|
-|Average Distance per Lap |— m|
+## Evaluation Summary
 
+| Evaluation Metric | Result | Status |
+|---|:---:|:---:|
+| **Test 1: 10 Consecutive Laps Without Collisions** | **10/10** | ✅ Completed & Verified |
+| **Test 2: Fastest Lap Time** | 54.12s | ✅ Completed |
+| **Average Lap Time** | 56.07s | ✅Verified |
+| **Average Speed** | — m/s | ⏳ Pending |
+| **Average Distance per Lap** | — m | ⏳ Pending |
+| **Overall Status** | — | ✅ Completed |
 ### Performance Evidence Video 
 
 The following evidence should be included:
